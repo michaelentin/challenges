@@ -6,10 +6,6 @@ package challenges;
 
 import java.util.ArrayList;
 
-/**
- * @author michaelentin
- *
- */
 public class Strings {
 
 	public Strings()
@@ -22,7 +18,7 @@ public class Strings {
 	 * @param word word to check
 	 * @return whether or not the string is a palindrome
 	 */
-	public boolean CheckForPalindrome(String word)
+	public boolean CheckForPalindrome(String word) throws NullPointerException
 	{
 		// get rid of any whitespace
 		word.trim();
@@ -51,7 +47,7 @@ public class Strings {
 	 * @param character the character to be removed from the word
 	 * @return the word without any of the characters in it
 	 */
-	public String RemoveCharacter(String word, char character)
+	public String RemoveCharacter(String word, char character) throws NullPointerException
 	{
 		String newString = "";
 		
@@ -61,7 +57,11 @@ public class Strings {
 		
 	}
 	
-	public ArrayList<String> GetPermutations(String word)
+	/**
+	 * @param word any word
+	 * @return an array list of all the possible permutations of that word (string)
+	 */
+	public ArrayList<String> GetPermutations(String word) throws NullPointerException
 	{
 		ArrayList<String> perms = new ArrayList<String>();
 		
@@ -107,6 +107,41 @@ public class Strings {
 		charArray[thisIndex] = temp;
 		
 		return String.valueOf(charArray);
+	}
+	
+	/**
+	 * @param word any word
+	 * @return the longest palindrome inside the word, empty string otherwise
+	 */
+	public String LongestPalindrome(String word) throws NullPointerException
+	{
+		// set string to return
+		String longestPalindrome = "";
+		
+		// we'll want to start at the whole word
+		int checkLength = word.length();
+		
+		// go through each length of possible substrings
+		for (int i = checkLength; i >= 3; i--)
+		{
+			// in each of those lengths, we'll need to iterate through each possible substring of that size
+			for (int j = 0; j <= checkLength - i; j++)
+			{
+				// so to get the next substring, we take where we are at in the string & go to the # of lengths away
+				String sub = word.substring(j, j + i);
+				
+				// use our other function to check for palindrome
+				boolean isPalindrome = CheckForPalindrome(sub);
+				
+				// if it's a palindrome & it's bigger, add it
+				if (isPalindrome && longestPalindrome.length() < sub.length())
+				{
+					longestPalindrome = sub;
+				}
+			}
+		}
+		
+		return longestPalindrome;
 	}
 
 }

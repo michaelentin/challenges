@@ -24,6 +24,12 @@ public class StringsTest {
 		strings = new Strings();
 	}
 	
+	@Test(expected = NullPointerException.class)
+	public void CheckForPalindromeNullString() {
+		String word = null;
+		boolean value = strings.CheckForPalindrome(word);
+	}
+	
 	@Test
 	public void CheckForPalindromeTwoDifferentSizeStrings() {
 		String word = "word";
@@ -111,6 +117,12 @@ public class StringsTest {
 		
 		assertEquals(expected, value);
 	}
+	
+	@Test(expected = NullPointerException.class)
+	public void RemoveCharacterNullString() {
+		String word = null;
+		String value = strings.RemoveCharacter(word, 'c');
+	}
 
 	@Test
 	public void SimplePermTest()
@@ -138,6 +150,53 @@ public class StringsTest {
 			}
 		}
 		
-		assertEquals(foundAll, true);
+		assertEquals(true, foundAll);
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void PermutationTestNullInput() {
+		String word = null;
+		ArrayList<String> value = strings.GetPermutations(word);
+	}
+	
+	@Test
+	public void LongestPalindromeOnePalindrome()
+	{
+		String word = "artootingsville";
+		String expected = "toot";
+		
+		String value = strings.LongestPalindrome(word);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test
+	public void LongestPalindromeTwoPalindromes()
+	{
+		String word = "tootara";
+		String expected = "toot";
+		
+		String value = strings.LongestPalindrome(word);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test
+	public void LongestPalindromeNoPalindromes()
+	{
+		String word = "topestry";
+		String expected = "";
+		
+		String value = strings.LongestPalindrome(word);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void LongestPalindromeNullString()
+	{
+		String word = null;
+		
+		String value = strings.LongestPalindrome(word);
 	}
 }
