@@ -4,7 +4,12 @@
 
 package challenges;
 
+import java.awt.List;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Strings {
 
@@ -17,6 +22,7 @@ public class Strings {
 	/**
 	 * @param word word to check
 	 * @return whether or not the string is a palindrome
+	 * @throws NullPointerException if word is null
 	 */
 	public boolean CheckForPalindrome(String word) throws NullPointerException
 	{
@@ -46,6 +52,7 @@ public class Strings {
 	 * @param word any word
 	 * @param character the character to be removed from the word
 	 * @return the word without any of the characters in it
+	 * @throws NullPointerException if word is null
 	 */
 	public String RemoveCharacter(String word, char character) throws NullPointerException
 	{
@@ -60,6 +67,7 @@ public class Strings {
 	/**
 	 * @param word any word
 	 * @return an array list of all the possible permutations of that word (string)
+	 * @throws NullPointerException if word is null
 	 */
 	public ArrayList<String> GetPermutations(String word) throws NullPointerException
 	{
@@ -112,6 +120,7 @@ public class Strings {
 	/**
 	 * @param word any word
 	 * @return the longest palindrome inside the word, empty string otherwise
+	 * @throws NullPointerException if word is null
 	 */
 	public String LongestPalindrome(String word) throws NullPointerException
 	{
@@ -143,5 +152,76 @@ public class Strings {
 		
 		return longestPalindrome;
 	}
+	
+	
+	/**
+	 * @param word any string that is a word
+	 * @return the first non repeating character in the word, space otherwise
+	 * @throws NullPointerException if word is null
+	 */
+	public char FindFirstNonRepeatingCharacter(String word) throws NullPointerException
+	{
+		// use a set for the repeating (as order doesn't matter) and an array list for non repeating (first in the list is first non repeating)
+		Set<Character> repeating = new HashSet<>();
+		ArrayList<Character> nonRepeating = new ArrayList<>();
+		
+		for (int i = 0; i < word.length(); i++)
+		{
+			char at = word.charAt(i);
+			
+			// if it's already in the repeating category, there's no real need to keep check
+			if (repeating.contains(at))
+			{
+				continue;
+			}
+			
+			// if in non-repeating, take it out and put it in the repeating
+			if (nonRepeating.contains(at))
+			{
+				// character cast so as to not confuse for index
+				nonRepeating.remove((Character) at);
+				repeating.add(at);
+			}
+			// else, just add to nonRepeating
+			else
+			{
+				nonRepeating.add(at);
+			}
+		}
 
+		// if no non repeating characters, return a space
+		if (nonRepeating.size() > 0)
+		{
+			return nonRepeating.get(0);
+		}
+		else
+		{
+			return ' ';
+		}
+	}
+	
+	/**
+	 * @param word a string in the form of a word
+	 * @param character the character we will be counting the number of times it occurs in the word
+	 * @return the number of times character appears in word
+	 * @throws NullPointerException if word is null
+	 */
+	public int CountOccurencesOfCharacter(String word, char character) throws NullPointerException
+	{
+		int numOccurences = 0;
+		
+		word = word.toLowerCase();
+		character = Character.toLowerCase(character);
+		
+		// simple loop is good enough
+		for (int i = 0; i < word.length(); i++)
+		{
+			if (word.charAt(i) == character)
+			{
+				numOccurences++;
+			}
+		}
+		
+		return numOccurences;
+	}
 }

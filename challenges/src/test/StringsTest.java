@@ -199,4 +199,125 @@ public class StringsTest {
 		
 		String value = strings.LongestPalindrome(word);
 	}
+	
+	@Test
+	public void FindFirstNonRepeatingCharCheckForSucces()
+	{
+		String word = "aaabbbcdddeeefggghhh";
+		
+		char expected = 'c';
+		char value = strings.FindFirstNonRepeatingCharacter(word);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test
+	public void FindFirstNonRepeatingCharIsFirst()
+	{
+		String word = "abbbcdddeeefggghhh";
+		
+		char expected = 'a';
+		char value = strings.FindFirstNonRepeatingCharacter(word);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test
+	public void FindFirstNonRepeatingCharIsLast()
+	{
+		String word = "aabbbccdddeeeffgggh";
+		
+		char expected = 'h';
+		char value = strings.FindFirstNonRepeatingCharacter(word);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test
+	public void FindFirstNonRepeatingCharNoRepeating()
+	{
+		String word = "aaabbbccdddeeeffggghhh";
+		
+		char expected = ' ';
+		char value = strings.FindFirstNonRepeatingCharacter(word);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void FindFirstNonRepeatingNullWord()
+	{
+		String word = null;
+		
+		char value = strings.FindFirstNonRepeatingCharacter(word);
+	}
+	
+	@Test
+	public void CountOccurencesOfCharacterOneOccurence()
+	{
+		String word = "book";
+		char toFind = 'b';
+		
+		int expected = 1;
+		int value = strings.CountOccurencesOfCharacter(word, toFind);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test
+	public void CountOccurencesOfCharacterNoOccurence()
+	{
+		String word = "book";
+		char toFind = 'c';
+		
+		int expected = 0;
+		int value = strings.CountOccurencesOfCharacter(word, toFind);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test
+	public void CountOccurencesOfCharacterManyOccurences()
+	{
+		String word = "boooooook";
+		char toFind = 'o';
+		
+		int expected = 7;
+		int value = strings.CountOccurencesOfCharacter(word, toFind);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test
+	public void CountOccurencesOfCharacterManyOccurencesMultipleCases()
+	{
+		String word = "boOoooOok";
+		char toFind = 'o';
+		
+		int expected = 7;
+		int value = strings.CountOccurencesOfCharacter(word, toFind);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test
+	public void CountOccurencesOfCharacterManyOccurencesUpperCaseChar()
+	{
+		String word = "boOoooOok";
+		char toFind = 'O';
+		
+		int expected = 7;
+		int value = strings.CountOccurencesOfCharacter(word, toFind);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void CountOccurencesOfCharacterNullWord()
+	{
+		String word = null;
+		char toFind = 'o';
+		
+		strings.CountOccurencesOfCharacter(word, toFind);
+	}
 }
