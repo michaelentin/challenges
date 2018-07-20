@@ -10,7 +10,7 @@ public class ArraysClass {
 	
 	public ArraysClass()
 	{
-		
+		// constructor
 	}
 	
 	public ArrayList<Integer> GetMissingNumbers(int[] numbers, int count) 
