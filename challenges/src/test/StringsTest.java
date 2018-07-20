@@ -201,123 +201,50 @@ public class StringsTest {
 	}
 	
 	@Test
-	public void FindFirstNonRepeatingCharCheckForSucces()
+	public void FirstNonRepeatedChar()
 	{
-		String word = "aaabbbcdddeeefggghhh";
-		
-		char expected = 'c';
-		char value = strings.FindFirstNonRepeatingCharacter(word);
-		
-		assertEquals(expected, value);
-	}
-	
-	@Test
-	public void FindFirstNonRepeatingCharIsFirst()
-	{
-		String word = "abbbcdddeeefggghhh";
-		
-		char expected = 'a';
-		char value = strings.FindFirstNonRepeatingCharacter(word);
-		
-		assertEquals(expected, value);
-	}
-	
-	@Test
-	public void FindFirstNonRepeatingCharIsLast()
-	{
-		String word = "aabbbccdddeeeffgggh";
-		
+		String word = "Hello";
 		char expected = 'h';
-		char value = strings.FindFirstNonRepeatingCharacter(word);
+		
+		char value = strings.FindFirstNonRepeatedChar(word);
 		
 		assertEquals(expected, value);
 	}
 	
 	@Test
-	public void FindFirstNonRepeatingCharNoRepeating()
+	public void NoNonRepeatedChars()
 	{
-		String word = "aaabbbccdddeeeffggghhh";
-		
+		String word = "Hooho";
 		char expected = ' ';
-		char value = strings.FindFirstNonRepeatingCharacter(word);
 		
-		assertEquals(expected, value);
-	}
-	
-	@Test(expected = NullPointerException.class)
-	public void FindFirstNonRepeatingNullWord()
-	{
-		String word = null;
-		
-		char value = strings.FindFirstNonRepeatingCharacter(word);
-	}
-	
-	@Test
-	public void CountOccurencesOfCharacterOneOccurence()
-	{
-		String word = "book";
-		char toFind = 'b';
-		
-		int expected = 1;
-		int value = strings.CountOccurencesOfCharacter(word, toFind);
+		char value = strings.FindFirstNonRepeatedChar(word);
 		
 		assertEquals(expected, value);
 	}
 	
 	@Test
-	public void CountOccurencesOfCharacterNoOccurence()
+	public void TestAnagrams()
 	{
-		String word = "book";
-		char toFind = 'c';
+		String word1 = "alabama";
+		String word2 = "labamaa";
 		
-		int expected = 0;
-		int value = strings.CountOccurencesOfCharacter(word, toFind);
+		boolean expected = true;
+		
+		boolean value = strings.CheckForAnagram(word1, word2);
 		
 		assertEquals(expected, value);
 	}
 	
 	@Test
-	public void CountOccurencesOfCharacterManyOccurences()
+	public void NotAnAnagram()
 	{
-		String word = "boooooook";
-		char toFind = 'o';
+		String word1 = "bogus";
+		String word2 = "logus";
 		
-		int expected = 7;
-		int value = strings.CountOccurencesOfCharacter(word, toFind);
+		boolean expected = false;
+		
+		boolean value = strings.CheckForAnagram(word1, word2);
 		
 		assertEquals(expected, value);
-	}
-	
-	@Test
-	public void CountOccurencesOfCharacterManyOccurencesMultipleCases()
-	{
-		String word = "boOoooOok";
-		char toFind = 'o';
-		
-		int expected = 7;
-		int value = strings.CountOccurencesOfCharacter(word, toFind);
-		
-		assertEquals(expected, value);
-	}
-	
-	@Test
-	public void CountOccurencesOfCharacterManyOccurencesUpperCaseChar()
-	{
-		String word = "boOoooOok";
-		char toFind = 'O';
-		
-		int expected = 7;
-		int value = strings.CountOccurencesOfCharacter(word, toFind);
-		
-		assertEquals(expected, value);
-	}
-	
-	@Test(expected = NullPointerException.class)
-	public void CountOccurencesOfCharacterNullWord()
-	{
-		String word = null;
-		char toFind = 'o';
-		
-		strings.CountOccurencesOfCharacter(word, toFind);
 	}
 }
