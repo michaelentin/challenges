@@ -151,4 +151,35 @@ public class ArraysClassTest {
 		assertEquals(expected, value);
 	}
 	
+//	@Test
+//	public void TestPairsToFindSum()
+//	{
+//		int[] nums = new int[] {2, 5, 1, 9, 0, -1, 3, 2, 11, 7, -2, -4, -8};
+//		
+//		arrayz.PrintAllPairsThatEqualSum(nums, 3);
+//	}
+	
+//	@Test
+//	public void TestRemoveDuplicates()
+//	{
+//		int[] nums = new int[] {2, 5, 1, 9, 0, -1, 3, 2, 11, 7, -2, -4, -8};
+//		
+//		int[] newNums = arrayz.RemoveAllDuplicatesFromArray(nums);
+//		
+//		for (int num: newNums)
+//		{
+//			System.out.println(num);
+//		}
+//	}
+	
+	@Test
+	public void PrintSmallestAndLargestInArray()
+	{
+		int[] nums = new int[] {500, -500, 1000, -1000, 120874102, -104801923, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0};
+		
+		arrayz.PrintLargestAndSmallestNumbers(nums);
+	}
+	
+	
+	
 }

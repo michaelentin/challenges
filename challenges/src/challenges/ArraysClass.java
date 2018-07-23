@@ -10,7 +10,7 @@ public class ArraysClass {
 	
 	public ArraysClass()
 	{
-		// constructor
+		
 	}
 	
 	public ArrayList<Integer> GetMissingNumbers(int[] numbers, int count) 
@@ -117,6 +117,83 @@ public class ArraysClass {
 		}	
 		
 		return nextHighest;
+	}
+	
+	public void PrintAllPairsThatEqualSum(int[] nums, int toFind)
+	{
+		// sort the array
+		Arrays.sort(nums);
+		
+		int leftIndex = 0;
+		int rightIndex = nums.length - 1;
+		
+		while (leftIndex < rightIndex)
+		{
+			int sum = nums[leftIndex] + nums[rightIndex];
+			
+			if (sum == toFind)
+			{
+				// found, save nums then move pointers
+				System.out.println(nums[leftIndex] + ", " + nums[rightIndex]);
+				leftIndex += 1;
+				rightIndex -= 1;
+			}
+			else if (sum < toFind)
+			{
+				// sum is less than toFind, increase left side
+				leftIndex += 1;
+			}
+			else
+			{
+				// sum is greater than toFind, decrease right side
+				rightIndex -= 1;
+			}
+		}
+	}
+	
+	public int[] RemoveAllDuplicatesFromArray(int[] nums)
+	{
+		Arrays.sort(nums);
+		
+		int[] newArray = new int[nums.length];
+		int count = 0;
+		int previous = nums[0];
+		
+		for (int i = 1; i < nums.length; i++)
+		{
+			int num = nums[i];
+			
+			if (num != previous)
+			{
+				newArray[count++] = num;
+			}
+			
+			previous = num;
+		}
+		
+		return newArray;
+	}
+	
+	public void PrintLargestAndSmallestNumbers(int[] nums)
+	{
+		int smallestNum = Integer.MAX_VALUE;
+		int largestNum = Integer.MIN_VALUE;
+		
+		for (int num: nums)
+		{
+			if (num > largestNum)
+			{
+				largestNum = num;
+			}
+			
+			if (num < smallestNum)
+			{
+				smallestNum = num;
+			}
+		}
+		
+		System.out.println(smallestNum);
+		System.out.println(largestNum);
 	}
 	
 }
