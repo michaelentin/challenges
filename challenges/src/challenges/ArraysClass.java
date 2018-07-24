@@ -196,6 +196,45 @@ public class ArraysClass {
 		System.out.println(largestNum);
 	}
 	
+	public int FindNumOfAllContiguousSubArraysThatAreNegative(int[] nums)
+	{
+		
+		int[] tempArray = new int[nums.length];
+		tempArray[0] = nums[0];
+		int count = nums[0] < 0 ? 1 : 0;
+		
+        for (int i = 1; i < nums.length; i++)
+        {
+            int num = nums[i];
+            tempArray[i] = tempArray[i - 1] + num;
+
+            if (tempArray[i] < 0)
+            {
+                count++;
+            }
+
+            for (int j = 0; j < i; j++)
+            {
+                int sub_result = tempArray[i] - tempArray[j];
+                if (sub_result < 0)
+                {
+                    count++;
+                }
+            }
+        }
+        
+		return count;
+	}
+	
+	// some generics stuff
+    public static <T> void printArray(T[] array)
+    {
+        for (T object: array)
+        {
+            System.out.println(object.toString());
+        }
+    }
+	
 }
 
 	

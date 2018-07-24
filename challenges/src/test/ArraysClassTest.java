@@ -151,6 +151,17 @@ public class ArraysClassTest {
 		assertEquals(expected, value);
 	}
 	
+	@Test
+	public void Test()
+	{
+		int[] array = new int[5];
+		
+		for (int i = 0; i < 5; i++)
+		{
+			System.out.println(array[i]);
+		}
+	}
+	
 //	@Test
 //	public void TestPairsToFindSum()
 //	{
@@ -178,6 +189,17 @@ public class ArraysClassTest {
 		int[] nums = new int[] {500, -500, 1000, -1000, 120874102, -104801923, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0};
 		
 		arrayz.PrintLargestAndSmallestNumbers(nums);
+	}
+	
+	@Test
+	public void TestNegSubArrayCount()
+	{
+		int[] nums = new int[] {1, -2, 4, -5, 1};
+		
+		int expected = 9;
+		int value = arrayz.FindNumOfAllContiguousSubArraysThatAreNegative(nums);
+		
+		assertEquals(expected, value);
 	}
 	
 	

@@ -7,6 +7,7 @@ package challenges;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  * @author michaelentin
@@ -204,6 +205,20 @@ public class Strings {
 	public int ConvertStringToInt(String number)
 	{
 		return Integer.parseInt(number);
+	}
+	
+	public String ReverseStringRecursively(String toReverse)
+	{
+		if (toReverse == null || toReverse.length() <= 1) return toReverse;
+		return ReverseStringRecursively(toReverse.substring(1)) + toReverse.charAt(0);
+	}
+	
+	public boolean DoesStringContainOnlyDigits(String str)
+	{
+		if (str == null || str == "") return false;
+		Pattern pattern = Pattern.compile(".*[^0-9].*");
+		
+		return !pattern.matcher(str).matches();
 	}
 
 }

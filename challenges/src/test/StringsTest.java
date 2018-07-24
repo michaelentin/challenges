@@ -247,4 +247,26 @@ public class StringsTest {
 		
 		assertEquals(expected, value);
 	}
+	
+	@Test
+	public void TestRecursiveReverseString()
+	{
+		String toReverse = "leviosa";
+		
+		String expected = "asoivel";
+		String value = strings.ReverseStringRecursively(toReverse);
+		
+		assertEquals(expected, value);
+	}
+	
+	@Test
+	public void CheckForOnlyDigitsTest()
+	{
+		String str = null;
+		
+		boolean expected = false;
+		boolean value = strings.DoesStringContainOnlyDigits(str);
+		
+		assertEquals(expected, value);
+	}
 }
